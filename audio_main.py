@@ -1,6 +1,7 @@
 import pygame
 import numpy as np
 import time
+from GetSound import GetSound
 
 # Initialize Pygame
 pygame.init()
@@ -13,6 +14,8 @@ sample_rate = 44100
 duration = 2.0  # Maximum duration for sound decay in seconds
 initial_volume = 1.0
 
+gs = GetSound()
+
 def generate_tone(frequency, duration):
     """Generates a continuous tone as a stereo wave array."""
     t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
@@ -21,13 +24,14 @@ def generate_tone(frequency, duration):
     return stereo_wave
 
 frequencies = {
-    pygame.K_a: 261.63,  # C3
-    pygame.K_s: 293.66,  # D3
-    pygame.K_d: 329.63,  # E3
-    pygame.K_f: 349.23,  # F3
-    pygame.K_g: 392.00,  # G3
-    pygame.K_h: 440.00,  # A3
-    pygame.K_j: 493.88,  # B3
+    (pygame.K_a,): gs.get_c3(),  # C3
+    (pygame.K_s,): gs.get_D3(),  # D3
+    (pygame.K_d,): gs.get_E3(),  # E3
+    (pygame.K_f,): gs.get_F3(),  # F3
+    (pygame.K_g,): gs.get_G3(),  # G3
+    (pygame.K_h,): gs.get_A3(),  # A3
+    (pygame.K_j,): gs.get_B3(),  # B3
+    (pygame.K_z, pygame.K_1): gs.get_c_hash()  # C# for combo (Z + 1)
 }
 
 playing_notes = {}
@@ -41,42 +45,46 @@ while True:
             pygame.quit()
             exit()
 
-        # Key down event
-        if event.type == pygame.KEYDOWN:
-            if event.key in frequencies and event.key not in playing_notes:
-                frequency = frequencies[event.key]
-                tone = generate_tone(frequency, duration)
-                if previous_note == event.key:
+    # Check current keys pressed
+    keys_pressed = pygame.key.get_pressed()
+
+    # Loop through each key combination in frequencies
+    for key_combo, frequency in frequencies.items():
+        # Check if the current key combination is pressed
+        if all(keys_pressed[key] for key in key_combo):
+            if key_combo not in playing_notes:
+                print(key_combo)
+                if previous_note == key_combo:
                     sound.set_volume(0)
-                sound = pygame.sndarray.make_sound((tone * 32767).astype(np.int16))  # Convert to sound format
-                sound.set_volume(initial_volume)  # Set initial volume
+                 # Convert to sound format
+                sound = frequency
+                sound.set_volume(initial_volume)
                 sound.play(-1)  # Play sound on loop
                 start_time = time.time()
-                playing_notes[event.key] = {'sound': sound, 'start_time': start_time}
+                playing_notes[key_combo] = {'sound': sound, 'start_time': start_time}
+        
+                # If this note is repeated, mute it momentarily
+                if previous_note == key_combo:
+                    sound.set_volume(0)
 
-        # Key up event
-        if event.type == pygame.KEYUP:
-            if event.key in playing_notes:
-                playing_notes[event.key]['sound'].fadeout(1000)  # Smooth fade-out over 1 second
-                del playing_notes[event.key]
+    # Key release logic
+    for key_combo in list(playing_notes.keys()):
+        if not all(keys_pressed[key] for key in key_combo):  # If any key in the combo is released
+            playing_notes[key_combo]['sound'].fadeout(1000)  # Smooth fade-out over 1 second
+            del playing_notes[key_combo]
 
     # Handle real-time amplitude decay for each playing note
-    for key in list(playing_notes.keys()):
-        note_data = playing_notes[key]
-        sound.set_volume(initial_volume)
+    for key_combo, note_data in playing_notes.items():
         elapsed_time = time.time() - note_data['start_time']  # Calculate elapsed time
         if elapsed_time > duration:
             note_data['sound'].fadeout(500)  # Fade out sound smoothly if max duration exceeded
-            del playing_notes[key]
+            del playing_notes[key_combo]
         else:
             # Adjust volume based on elapsed time for smooth decay
             volume = max(initial_volume - (elapsed_time / duration), 0)
-            note_data['sound'].set_volume(volume)  # Update volume smoothly
-        previous_note = key
+            note_data['sound'].set_volume(volume)
+        previous_note = key_combo
 
+    # Clear the screen and update display
     screen.fill((0, 0, 0))
     pygame.display.flip()
-
-
-# create sound class and load all the sound frequency
-# Access these sounds once loaded hopefully it we dont here breaks.
