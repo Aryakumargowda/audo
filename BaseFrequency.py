@@ -1,10 +1,9 @@
 class BaseFrequency:
     def __init__(self):
-        self.c = 130.813
-        self.d = 146.832
-        self.e = 164.814
-        self.f = 174.614
-        self.g = 195.998
-        self.a = 220.000
-        self.b = 246.942
+        self.c3 = 130.813
+        self.c4 = 261.63
+        self.c5 = 523.25
+        self.c6 = 1046.50
+        self.c7 = 2093.00
+        self.c8 = 4186.01
     
