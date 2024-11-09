@@ -3,8 +3,9 @@ from BaseFrequency import BaseFrequency
 import pygame
 
 sample_rate = 44100
-duration = 2.0  # Maximum duration for sound decay in seconds
+duration = 4  # Maximum duration for sound decay in seconds
 initial_volume = 1.0
+
 
 class GetSound():
 
