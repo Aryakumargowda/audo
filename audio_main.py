@@ -13,7 +13,7 @@ pygame.display.set_caption("Musical Note Generator with Sine Wave Visualization"
 
 # Define sample rate and initial parameters
 sample_rate = 44100
-duration = 1  # Maximum duration for sound decay in seconds
+duration = 2  # Maximum duration for sound decay in seconds
 initial_volume = 1.0
 
 base_frequency =BaseFrequency()
@@ -34,7 +34,7 @@ frequencies = {
     (pygame.K_a, pygame.K_6): C3.get_a(),
     (pygame.K_a, pygame.K_7): C3.get_b(),
 
-    (pygame.K_s, pygame.K_1): C4.get_c(), # D3
+    (pygame.K_s, pygame.K_1): C4.get_c(),
     (pygame.K_s, pygame.K_2): C4.get_d(),
     (pygame.K_s, pygame.K_3): C4.get_e(),
     (pygame.K_s, pygame.K_4): C4.get_f(),
@@ -42,7 +42,7 @@ frequencies = {
     (pygame.K_s, pygame.K_6): C4.get_a(),
     (pygame.K_s, pygame.K_7): C4.get_b(),
 
-    (pygame.K_d, pygame.K_1): C5.get_c(),  # E3
+    (pygame.K_d, pygame.K_1): C5.get_c(),
     (pygame.K_d, pygame.K_2): C5.get_d(),
     (pygame.K_d, pygame.K_3): C5.get_e(),
     (pygame.K_d, pygame.K_4): C5.get_f(),
@@ -50,7 +50,7 @@ frequencies = {
     (pygame.K_d, pygame.K_6): C5.get_a(),
     (pygame.K_d, pygame.K_7): C5.get_b(),
 
-    (pygame.K_f, pygame.K_1): C6.get_c(),  # F3
+    (pygame.K_f, pygame.K_1): C6.get_c(),
     (pygame.K_f, pygame.K_2): C6.get_d(),
     (pygame.K_f, pygame.K_3): C6.get_e(),
     (pygame.K_f, pygame.K_4): C6.get_f(),
@@ -58,7 +58,7 @@ frequencies = {
     (pygame.K_f, pygame.K_6): C6.get_a(),
     (pygame.K_f, pygame.K_7): C6.get_b(),
 
-    (pygame.K_g, pygame.K_1): C7.get_c(),  # G3
+    (pygame.K_g, pygame.K_1): C7.get_c(),
     (pygame.K_g, pygame.K_2): C7.get_d(),
     (pygame.K_g, pygame.K_3): C7.get_e(),
     (pygame.K_g, pygame.K_4): C7.get_f(),
@@ -66,7 +66,7 @@ frequencies = {
     (pygame.K_g, pygame.K_6): C7.get_a(),
     (pygame.K_g, pygame.K_7): C7.get_b(),
 
-    (pygame.K_h, pygame.K_1): C8.get_c(),  # A3
+    (pygame.K_h, pygame.K_1): C8.get_c(),
     (pygame.K_h, pygame.K_2): C8.get_d(),
     (pygame.K_h, pygame.K_3): C8.get_e(),
     (pygame.K_h, pygame.K_4): C8.get_f(),
