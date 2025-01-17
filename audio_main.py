@@ -16,7 +16,7 @@ sample_rate = 44100
 duration = 2  # Maximum duration for sound decay in seconds
 initial_volume = 1.0
 
-base_frequency =BaseFrequency()
+base_frequency = BaseFrequency()
 
 C3 = GetSound(base_frequency.c3)
 C4 = GetSound(base_frequency.c4)
@@ -26,53 +26,138 @@ C7 = GetSound(base_frequency.c7)
 C8 = GetSound(base_frequency.c8)
 
 frequencies = {
-    (pygame.K_a, pygame.K_1): C3.get_c(),
-    (pygame.K_a, pygame.K_2): C3.get_d(),
-    (pygame.K_a, pygame.K_3): C3.get_e(),
-    (pygame.K_a, pygame.K_4): C3.get_f(),
-    (pygame.K_a, pygame.K_5): C3.get_g(),
-    (pygame.K_a, pygame.K_6): C3.get_a(),
-    (pygame.K_a, pygame.K_7): C3.get_b(),
+    (pygame.K_a, pygame.K_1): {"normal": C3.get_c(),
+                               "sharp": C3.get_c_s()
+                               },
+    (pygame.K_a, pygame.K_2): {"normal": C3.get_d(),
+                               "sharp": C3.get_d_s()
+                               },
+    (pygame.K_a, pygame.K_3): {"normal": C3.get_e(),
+                               "sharp": C3.get_e()
+                               },
+    (pygame.K_a, pygame.K_4): {"normal": C3.get_f(),
+                               "sharp": C3.get_f_s()
+                               },
+    (pygame.K_a, pygame.K_5): {"normal": C3.get_g(),
+                               "sharp": C3.get_g_s()
+                               },
+    (pygame.K_a, pygame.K_6): {"normal": C3.get_a(),
+                               "sharp": C3.get_a_s()
+                               },
+    (pygame.K_a, pygame.K_7): {"normal": C3.get_b(),
+                               "sharp": C3.get_b()
+                               },
 
-    (pygame.K_s, pygame.K_1): C4.get_c(),
-    (pygame.K_s, pygame.K_2): C4.get_d(),
-    (pygame.K_s, pygame.K_3): C4.get_e(),
-    (pygame.K_s, pygame.K_4): C4.get_f(),
-    (pygame.K_s, pygame.K_5): C4.get_g(),
-    (pygame.K_s, pygame.K_6): C4.get_a(),
-    (pygame.K_s, pygame.K_7): C4.get_b(),
 
-    (pygame.K_d, pygame.K_1): C5.get_c(),
-    (pygame.K_d, pygame.K_2): C5.get_d(),
-    (pygame.K_d, pygame.K_3): C5.get_e(),
-    (pygame.K_d, pygame.K_4): C5.get_f(),
-    (pygame.K_d, pygame.K_5): C5.get_g(),
-    (pygame.K_d, pygame.K_6): C5.get_a(),
-    (pygame.K_d, pygame.K_7): C5.get_b(),
+    (pygame.K_s, pygame.K_1): {"normal": C4.get_c(),
+                               "sharp": C4.get_c_s()
+                               },
+    (pygame.K_s, pygame.K_2): {"normal": C4.get_d(),
+                               "sharp": C4.get_d_s()
+                               },
+    (pygame.K_s, pygame.K_3): {"normal": C4.get_e(),
+                               "sharp": C4.get_e()
+                               },
+    (pygame.K_s, pygame.K_4): {"normal": C4.get_f(),
+                               "sharp": C4.get_f_s()
+                               },
+    (pygame.K_s, pygame.K_5): {"normal": C4.get_g(),
+                               "sharp": C4.get_g_s()
+                               },
+    (pygame.K_s, pygame.K_6): {"normal": C4.get_a(),
+                               "sharp": C4.get_a_s()
+                               },
+    (pygame.K_s, pygame.K_7): {"normal": C4.get_b(),
+                               "sharp": C4.get_b()
+                               },
 
-    (pygame.K_f, pygame.K_1): C6.get_c(),
-    (pygame.K_f, pygame.K_2): C6.get_d(),
-    (pygame.K_f, pygame.K_3): C6.get_e(),
-    (pygame.K_f, pygame.K_4): C6.get_f(),
-    (pygame.K_f, pygame.K_5): C6.get_g(),
-    (pygame.K_f, pygame.K_6): C6.get_a(),
-    (pygame.K_f, pygame.K_7): C6.get_b(),
+    (pygame.K_d, pygame.K_1): {"normal": C5.get_c(),
+                               "sharp": C5.get_c_s()
+                               },
+    (pygame.K_d, pygame.K_2): {"normal": C5.get_d(),
+                               "sharp": C5.get_d_s()
+                               },
+    (pygame.K_d, pygame.K_3): {"normal": C5.get_e(),
+                               "sharp": C5.get_e()
+                               },
+    (pygame.K_d, pygame.K_4): {"normal": C5.get_f(),
+                               "sharp": C5.get_f_s()
+                               },
+    (pygame.K_d, pygame.K_5): {"normal": C5.get_g(),
+                               "sharp": C5.get_g_s()
+                               },
+    (pygame.K_d, pygame.K_6): {"normal": C5.get_a(),
+                               "sharp": C5.get_a_s()
+                               },
+    (pygame.K_d, pygame.K_7): {"normal": C5.get_b(),
+                               "sharp": C5.get_b()
+                               },
 
-    (pygame.K_g, pygame.K_1): C7.get_c(),
-    (pygame.K_g, pygame.K_2): C7.get_d(),
-    (pygame.K_g, pygame.K_3): C7.get_e(),
-    (pygame.K_g, pygame.K_4): C7.get_f(),
-    (pygame.K_g, pygame.K_5): C7.get_g(),
-    (pygame.K_g, pygame.K_6): C7.get_a(),
-    (pygame.K_g, pygame.K_7): C7.get_b(),
+    (pygame.K_f, pygame.K_1): {"normal": C6.get_c(),
+                               "sharp": C6.get_c_s()
+                               },
+    (pygame.K_f, pygame.K_2): {"normal": C6.get_d(),
+                               "sharp": C6.get_d_s()
+                               },
+    (pygame.K_f, pygame.K_3): {"normal": C6.get_e(),
+                               "sharp": C6.get_e()
+                               },
+    (pygame.K_f, pygame.K_4): {"normal": C6.get_f(),
+                               "sharp": C6.get_f_s()
+                               },
+    (pygame.K_f, pygame.K_5): {"normal": C6.get_g(),
+                               "sharp": C6.get_g_s()
+                               },
+    (pygame.K_f, pygame.K_6): {"normal": C6.get_a(),
+                               "sharp": C6.get_a_s()
+                               },
+    (pygame.K_f, pygame.K_7): {"normal": C6.get_b(),
+                               "sharp": C6.get_b()
+                               },
 
-    (pygame.K_h, pygame.K_1): C8.get_c(),
-    (pygame.K_h, pygame.K_2): C8.get_d(),
-    (pygame.K_h, pygame.K_3): C8.get_e(),
-    (pygame.K_h, pygame.K_4): C8.get_f(),
-    (pygame.K_h, pygame.K_5): C8.get_g(),
-    (pygame.K_h, pygame.K_6): C8.get_a(),
-    (pygame.K_h, pygame.K_7): C8.get_b(),
+    (pygame.K_g, pygame.K_1): {"normal": C7.get_c(),
+                               "sharp": C7.get_c_s()
+                               },
+    (pygame.K_g, pygame.K_2): {"normal": C7.get_d(),
+                               "sharp": C7.get_d_s()
+                               },
+    (pygame.K_g, pygame.K_3): {"normal": C7.get_e(),
+                               "sharp": C7.get_e()
+                               },
+    (pygame.K_g, pygame.K_4): {"normal": C7.get_f(),
+                               "sharp": C7.get_f_s()
+                               },
+    (pygame.K_g, pygame.K_5): {"normal": C7.get_g(),
+                               "sharp": C7.get_g_s()
+                               },
+    (pygame.K_g, pygame.K_6): {"normal": C7.get_a(),
+                               "sharp": C7.get_a_s()
+                               },
+    (pygame.K_g, pygame.K_7): {"normal": C7.get_b(),
+                               "sharp": C7.get_b()
+                               },
+
+    (pygame.K_h, pygame.K_1): {"normal": C8.get_c(),
+                               "sharp": C8.get_c_s()
+                               },
+    (pygame.K_h, pygame.K_2): {"normal": C8.get_d(),
+                               "sharp": C8.get_d_s()
+                               },
+    (pygame.K_h, pygame.K_3): {"normal": C8.get_e(),
+                               "sharp": C8.get_e()
+                               },
+    (pygame.K_h, pygame.K_4): {"normal": C8.get_f(),
+                               "sharp": C8.get_f_s()
+                               },
+    (pygame.K_h, pygame.K_5): {"normal": C8.get_g(),
+                               "sharp": C8.get_g_s()
+                               },
+    (pygame.K_h, pygame.K_6): {"normal": C8.get_a(),
+                               "sharp": C8.get_a_s()
+                               },
+    (pygame.K_h, pygame.K_7): {"normal": C8.get_b(),
+                               "sharp": C8.get_b()
+                               }
 }
 
 playing_notes = {}
@@ -88,29 +173,42 @@ while True:
 
     # Check current keys pressed
     keys_pressed = pygame.key.get_pressed()
+    mods = pygame.key.get_mods()
+
+    # Add an extra key like shift, when pressed the tone should start playing from the volume/amplitude of currently playing tone
+    # (simulate string_slide effect)
 
     # Loop through each key combination in frequencies
-    for key_combo, frequency in frequencies.items():
+    for key_combo, freq_variants in frequencies.items():
         # Check if the current key combination is pressed
         if all(keys_pressed[key] for key in key_combo):
+
+            if mods & pygame.KMOD_SHIFT:
+                frequency = freq_variants["sharp"]
+            else:
+                frequency = freq_variants["normal"]
+
+            print(key_combo)
             if key_combo not in playing_notes:
-                print(key_combo)
-                if previous_note == key_combo:
-                    sound.set_volume(0)
+                starting_volume = 0
+                if previous_note and (previous_note in playing_notes):
+                    starting_volume = playing_notes[previous_note]["sound"].get_volume()
+
                 # Convert to sound format
                 sound = frequency
-                sound.set_volume(initial_volume)
+                sound.set_volume(starting_volume if mods & pygame.KMOD_SHIFT else initial_volume)
                 sound.play()  # Play sound on loop
-                playing_notes[key_combo] = {"sound": sound, "start_time": time.time()}
 
-                # If this note is repeated, mute it momentarily
-                if previous_note == key_combo:
-                    sound.set_volume(0)
+                playing_notes[key_combo] = {"sound": sound, "start_time": time.time()}
+                print(playing_notes, previous_note)
+
+            # If this note is repeated, mute it momentarily
+            previous_note = key_combo
 
     # Key release logic
     for key_combo in list(playing_notes.keys()):
         if not all(
-            keys_pressed[key] for key in key_combo
+                keys_pressed[key] for key in key_combo
         ):  # If any key in the combo is released
             playing_notes[key_combo]["sound"].fadeout(
                 1000
@@ -130,8 +228,8 @@ while True:
                 # Adjust volume based on elapsed time for smooth decay
                 volume = max(initial_volume - (elapsed_time / duration), 0)
                 note_data["sound"].set_volume(volume)
-        previous_note = key_combo
 
     # Clear the screen and update display
     screen.fill((0, 0, 0))
     pygame.display.flip()
+    clock.tick(60)
